@@ -1,0 +1,17 @@
+set atblanks
+set cutfromcursor
+set softwrap
+set tabsize 4
+set tabstospaces
+set constantshow
+set linenumbers
+set positionlog
+set zap
+set autoindent
+set indicator
+set minibar
+bind ^C copy main
+bind ^V paste all
+bind ^F whereis all
+bind ^S savefile main
+set nonewlines
