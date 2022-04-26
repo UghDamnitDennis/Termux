@@ -87,17 +87,17 @@ read ready_yn
         [yY]*) clear
                secs=$((5))
                while [ $secs -gt 0 ]; do
-                   echo -ne "\033[3m\033[4m\033[36mLaunching Termux setup in:\033[0m \033[1\033[4;37;41$secs\033[0m\033[0K\r"
+                   echo -ne "\033[1;36mLaunching Termux setup in: $secs1\033[0m\033[0K\r"
                    sleep 1
                    : $((secs--))
                done
                echo -ne "\n"
                clear
                ./setup_type.sh
-               exit 1
+               exit
                ;;
         [nN]*) echo -ne "\033[1m\033[4m\033[36mWhen you are ready to launch setup simply execute the 'setup_type' (./setup_type) script located in the HOME directory.\033[0m\n"
-               exit 1
+               exit
                ;;
            * ) echo -ne "\033[1m\033[4m\033[30;41mInvalid Selection.\033[0m\n"
                sleep .25
