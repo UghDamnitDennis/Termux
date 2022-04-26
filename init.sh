@@ -81,4 +81,5 @@ if [ $secs -gt 0 ]; do
     : $((secs--))
 done
 clear
-./setup_type.sh
+bash setup_type.sh
+exit
