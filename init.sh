@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# GitHub Credentials
-gituname="UghDamnitDennis"
-gitemail="dennis.perryjr@outlook.com"
-gittoken="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"
-
 # Update Termux
 clear
 echo -ne "\033[3m\033[4m\033[34mUpdating Termux.\033[0m\n"
@@ -60,8 +55,8 @@ sleep 1
 echo -ne "\033[31m>>>>>>>>>>>>>                           [33%]\033[0m\r"
 sleep .25
 echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>>>>>>>              [66%]\033[0m\r"
-git clone https://$gituname:$gittoken@github.com/$gituname/Termux.git > /dev/null 2>&1
-echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>[100%]\033[0m\r"
+git clone https://UghDamnitDennis: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@github.com/UghDamnitDennis/Termux.git > /dev/null 2>&1
+echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>[100%]\033[0m\n"
 sleep.25
 echo -ne "\033[3m\033[4m\033[35mSetup files downloaded successfully.\033[0m\n\n"
 sleep 1
@@ -73,33 +68,17 @@ echo -ne "\033[31m>>>>>>>>>>>>>>>                         [33%]\033[0m\r"
 mv /data/data/com.termux/files/home/Termux/setup/setup_type.sh /data/data/com.termux/files/home/
 echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>          [66%]\033[0m\r"
 chmod +x setup_type.sh
-echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>[100%]\033[0m\r"
+echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>[100%]\033[0m\n"
 sleep .25
 echo -ne "\033[3m\033[4m\033[35mFiles are ready.\033[0m\n\n"
 sleep 1
 
-# Prompt for Setup Readiness
-while true; do
-echo -ne "\033[1m\033[4m\033[34mAre you ready to launch Termux setup? [Y/N]\033[0m\n"
-read ready_yn
-    case $ready_yn in
-        [yY]*) clear
-               secs=$((5))
-               while [ $secs -gt 0 ]; do
-                   echo -ne "\033[1;36mLaunching Termux setup in: $secs\033[0m\033[0K\r"
-                   sleep 1
-                   : $((secs--))
-               done
-               echo -ne "\n"
-               clear
-               ./setup_type.sh
-               exit
-               ;;
-        [nN]*) echo -ne "\033[1m\033[4m\033[36mWhen you are ready to launch setup simply execute the 'setup_type' (./setup_type) script located in the HOME directory.\033[0m\n"
-               exit
-               ;;
-           * ) echo -ne "\033[1m\033[4m\033[30;41mInvalid selection.\033[0m\n"
-               sleep .25
-               >&2
-    esac
+# Launch Setup
+secs=$((5))
+if [ $secs -gt 0 ]; do
+    echo -ne "\033[1;36mLaunching setup in: $secs\033[0m\033[0K\r"
+    sleep 1
+    : $((secs--))
 done
+clear
+./setup_type.sh
