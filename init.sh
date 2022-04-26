@@ -55,7 +55,7 @@ sleep 1
 echo -ne "\033[31m>>>>>>>>>>>>>                           [33%]\033[0m\r"
 sleep .25
 echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>>>>>>>              [66%]\033[0m\r"
-git clone https://UghDamnitDennis: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@github.com/UghDamnitDennis/Termux.git > /dev/null 2>&1
+git clone https://github.com/UghDamnitDennis/Termux.git > /dev/null 2>&1
 echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>[100%]\033[0m\n"
 sleep.25
 echo -ne "\033[3m\033[4m\033[35mSetup files downloaded successfully.\033[0m\n\n"
