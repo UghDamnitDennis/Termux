@@ -26,29 +26,9 @@ while true; do
                       echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>>>>>>>              [66%]\033[0m\r"
                       chmod +x setup_s.sh
                       echo -ne "\033[32m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>[100%]\033[0m\n"
-                      while true; do
-                          echo -ne ${INFO}"Setup is ready.\nWould you like to execute it now? [Y/N]\n"${CLR}
-                          read setup_s_yn
-                          case $setup_s_yn in
-                              [yY]*) clear
-                                     s_secs=$((3))
-                                     while [ $s_secs -gt 0 ]; do
-                                         echo -ne "\033[1;36mLaunching setup in: $s_secs\033[0m\033[0K\r"
-                                         sleep 1
-                                         : $((s_secs--))
-                                         echo -ne "\n"
-                                     done
-                                     ./setup_s.sh
-                                     exit
-                                     ;;
-                              [nN]*) echo -ne ${WARN}"When you are ready to execute Small Screen setup execute the setup_s.sh script located in the HOME directory.\n"${CLR}
-                                     exit
-                                     ;;
-                                 * ) echo -ne ${URG}"Invalid selection."${CLR}
-                                     sleep .25
-                                     >&2
-                          esac
-                      done
+                      ./setup_s.sh
+                      exit
+                      ;;
                [lL]*) clear
                       echo -ne ${INFO}"Getting Large Screen setup ready.\n"${CLR}
                       sleep 1
@@ -57,28 +37,9 @@ while true; do
                       echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>>>>>>>              [66%]\033[0m\r"
                       chmod +x setup_l.sh
                       echo -ne "\033[32m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>[100%]\033[0m\n"
-                      while true; do
-                          echo -ne ${INFO}"Setup is ready.\nWould you like to run it now? [Y/N]\n"${CLR}
-                          read setup_l_yn
-                          case $setup_l_yn in
-                              [yY]*) l_secs=$((3))
-                                     while [ $l_secs -gt 0 ]; do
-                                         echo -ne "\033[1;36mLaunching setup in: $l_secs\033[0m\033[0K\r"
-                                         sleep 1
-                                         : $((l_secs--))
-                                         echo -ne "\n"
-                                     done
-                                     ./setup_l.sh
-                                     exit
-                                     ;;
-                              [nN]*) echo -ne ${WARN}"When you are ready to execute Large Screen setup execute the setup_l.sh script located in the HOME directory.\n"${CLR}
-                                     exit
-                                     ;;
-                                 * ) echo -ne ${URG}"Invalid selection."${CLR}
-                                     sleep .25
-                                     >&2
-                          esac
-                      done
+                      ./setup_l.sh
+                      exit
+                      ;;
                [bB]*) clear
                       echo -ne ${INFO}"Getting Basic setup ready.\n"${CLR}
                       sleep 1
@@ -87,29 +48,13 @@ while true; do
                       echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>>>>>>>              [66%]\033[0m\r"
                       chmod +x setup_b.sh
                       echo -ne "\033[32m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>[100%]\033[0m\n"
-                      while true; do
-                          echo -ne ${INFO}"Setup is ready.\nWould you like to run it now? [Y/N]"${CLR}
-                          read setup_b_yn
-                          case $setup_b_yn in
-                              [yY]*) b_secs=$((3))
-                                     while [ $b_secs -gt 0 ]; do
-                                         echo -ne "\033[1;36mLaunching setup in: $b_secs\033[0m\033[0K\r"
-                                         sleep 1
-                                         : $((b_secs--))
-                                         echo -ne "\n"
-                                     done
-                                     ./setup_b.sh
-                                     exit
-                                     ;;
-                              [nN]*) echo -ne ${WARN}"When you are ready to exeute Basic Termux setup launch the setup_b.sh script located in the HOME directory.\n"${CLR}
-                                     exit
-                                     ;;
-                          esac
-                      done
-               [qQ]*) echo -ne ${WARN}"Aborting.\n"${CLR}
+                      ./setup_b.sh
                       exit
                       ;;
-                  * ) echo -ne ${URG}"Invalid selection.\n"${CLR}
+               [qQ]*) echo -ne ${URG}"Aborting.\n"${CLR}
+                      exit
+                      ;;
+                  * ) echo -ne ${WARN}"Invalid selection.\n"${CLR}
                       sleep .25
                       >&2
     esac
