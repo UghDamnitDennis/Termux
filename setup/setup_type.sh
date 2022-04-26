@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# Style Variables
-CLR=$(echo -e '\033[0m')
-INFO=$(echo -e '\033[3;32m')
-WARN=$(echo -e '\033[1;30;43m')
-URG=$(echo -e '\033[1;30;41m')
-USER=$(echo -e '\033[4;36m')
-OPT=$(echo -e '\033[3m\033[4;34m')
-
 # Delete init.sh
 [ -f "/data/data/com.termux/files/home/init.sh" ] && rm -rf /data/data/com.termux/files/home/init.sh
 
