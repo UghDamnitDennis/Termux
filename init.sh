@@ -14,43 +14,25 @@ echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        [80%]\033[0m\r"
 yes | pkg upgrade > /dev/null 2>&1
 echo -ne "\033[32m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>[100%]\033[0m\n"
 sleep .25
-echo -ne "\033[3m\033[4m\033[35mTermux updated successfully.\033[0m\n\n"
-sleep 1
-
-# Cleanup Packages
-echo -ne "\033[3m\033[4m\033[34mCleaning up Termux.\033[0m\n"
-sleep 1
-echo -ne "\033[31m>>>>>>>>                                [20%]\033[0m\r"
-apt clean > /dev/null 2>&1
-echo -ne "\033[31m>>>>>>>>>>>>>>>>                        [40%]\033[0m\r"
-apt autoclean > /dev/null 2>&1
-echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>>>>>                [60%]\033[0m\r"
-apt autoremove > /dev/null 2>&1
-echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        [80%]\033[0m\r"
-pkg clean > /dev/null 2>&1 && > /dev/null 2>&1
-echo -ne "\033[32m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>[100%]\033[0m\n"
-sleep .25
-echo -ne "\033[3m\033[4m\033[35mTermux packages cleaned up successfully.\033[0m\n\n"
+echo -ne "\033[3m\033[4m\033[35mTermux has been updated.\033[0m\n\n"
 sleep 1
 
 # Install Essential Packages
 echo -ne "\033[3m\033[4m\033[34mInstalling essential packages.\033[0m\n"
 sleep 1
-echo -ne "\033[31m>>>>>>>>                                [20%]\033[0m\r"
+echo -ne "\033[31m>>>>>>>>>>                              [25%]\033[0m\r"
 yes | pkg install git > /dev/null 2>&1
-echo -ne "\033[31m>>>>>>>>>>>>>>>>                        [40%]\033[0m\r"
+echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>                    [50%]\033[0m\r"
 yes | pkg install dialog > /dev/null 2>&1
-echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>>>>>                [60%]\033[0m\r"
+echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>          [75%]\033[0m\r"
 yes | pkg install man > /dev/null 2>&1
-echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        [80%]\033[0m\r"
-yes | pkg install mc > /dev/null 2>&1
-echo -ne "\033[32m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>[100%]\033[0m\n"
+echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>[100%]\033[0m\r"
 sleep .25
-echo -ne "\033[3m\033[4m\033[35mEssential packages installed successfully.\033[0m\n\n"
+echo -ne "\033[3m\033[4m\033[35mEssential packages have been installed.\033[0m\n\n"
 sleep 1
 
 # Clone Termux Repo
-echo -ne "\033[3m\033[4m\033[34mDownloading setup files.\033[0m\n"
+echo -ne "\033[3m\033[4m\033[34mCloning Termux repo.\033[0m\n"
 sleep 1
 echo -ne "\033[31m>>>>>>>>>>>>>                           [33%]\033[0m\r"
 sleep .25
@@ -58,7 +40,7 @@ echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>>>>>>>              [66%]\033[0m\r"
 git clone https://github.com/UghDamnitDennis/Termux.git > /dev/null 2>&1
 echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>[100%]\033[0m\n"
 sleep.25
-echo -ne "\033[3m\033[4m\033[35mSetup files downloaded successfully.\033[0m\n\n"
+echo -ne "\033[3m\033[4m\033[35mTermux repo has been cloned.\033[0m\n\n"
 sleep 1
 
 # Organize Files and Grant Permission
