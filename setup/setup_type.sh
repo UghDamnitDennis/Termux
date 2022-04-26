@@ -5,11 +5,14 @@
 
 # Device Selection
 while true; do
-    echo -ne "\033[1m\033[4;36m[S]mall Screen Device\033[0m\n\033[1m\033[4;36m[L]arge Screen Device\033[0m\n\033[1m\033[4;36m[B]asic (non-device specific) Setup\033[0m\n\033[1m\033[4;36m[Q]uit\033[0m\n"
+    echo -ne "\033[1m\033[4;36m[S]mall Screen Device\033[0m\n"
+    echo -ne "\033[1m\033[4;36m[L]arge Screen Device\033[0m\n"
+    echo -ne "\033[1m\033[4;36m[B]asic (non-device specific) Setup\033[0m\n"
+    echo -ne "\033[1m\033[4;36m[Q]uit\033[0m\n"
     read setup_type
     case $setup_type in
                   [sS]*) clear
-                         echo -ne "\033[3;33mGetting Small Screen setup ready.\033[0m\n"
+                         echo -ne "\033[3;33mGetting ready.\033[0m\n"
                          sleep 1
                          echo -ne "\033[31m>>>>>>>>>>>>>                           [33%]\033[0m\r"
                          mv /data/data/com.termux/files/home/Termux/setup/smallscreen/setup_s.sh /data/data/com.termux/files/home/
@@ -27,7 +30,7 @@ while true; do
                          exit
                          ;;
                   [lL]*) clear
-                         echo -ne "\033[3;33mGetting Large Screen setup ready.\033[0m\n"
+                         echo -ne "\033[3;33mGetting ready.\033[0m\n"
                          sleep 1
                          echo -ne "\033[31m>>>>>>>>>>>>>                           [33%]\033[0m\r"
                          mv /data/data/com.termux/files/home/Termux/setup/largescreen/setup_l.sh /data/data/com.termux/files/home/
@@ -45,7 +48,7 @@ while true; do
                          exit
                          ;;
                [bB]*|"") clear
-                         echo -ne "\033[3;33mGetting Basic setup ready.\033[0m\n"
+                         echo -ne "\033[3;33mGetting ready.\033[0m\n"
                          sleep 1
                          echo -ne "\033[31m>>>>>>>>>>>>>                           [33%]\033[0m\r"
                          mv /data/data/com.termux/files/home/Termux/setup/basic/setup_b.sh /data/data/com.termux/files/home/
