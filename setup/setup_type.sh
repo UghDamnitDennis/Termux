@@ -8,34 +8,100 @@ URG=$(echo -e '\033[1;30;41m')
 USER=$(echo -e '\033[4;36m')
 OPT=$(echo -e '\033[3m\033[4;34m')
 
+# Delete init.sh
+[ -f "/data/data/com.termux/files/home/init.sh" ] && rm -rf /data/data/com.termux/files/home/init.sh
+
 # Device Selection
-echo ${USER}'Please select a device size to launch the appropriate setup script.'${CLR};
-echo ${OPT}'1 - Small Screen Device'${CLR};
-echo ${OPT}'2 - Large Screen Device'${CLR};
-echo ${OPT}'3 - Basic Setup (skip device specific configuration files, etc.)'${CLR};
-echo ${OPT}'4 - Abort Setup'${CLR};
-read -p ${USER}'Please make a selection:'${CLR} dev_type
-    case $dev_type in
-        1) echo ${INFO}'Organizing files and granting necessary permissions.'${CLR};sleep 0.25s;
-           cp /data/data/com.termux/files/home/Termux/setup/smallscreensetup.sh /data/data/com.termux/files/home/;
-           chmod +x smallscreensetup.sh;
-           echo ${INFO}'Launching small screen device setup.'${CLR};sleep 0.25s;
-           ./smallscreensetup.sh
-           ;;
-        2) echo ${INFO}'Organizing files and granting necessary permissions.'${CLR};sleep 0.25s;
-           cp /data/data/com.termux/files/home/Termux/setup/largescreensetup.sh /data/data/com.termux/files/home/;
-           chmod +x largescreensetup.sh;
-           echo ${INFO}'Launching large screen device setup.'${CLR};sleep 0.25s;
-           ./largescreensetup.sh
-           ;;
-        3) echo ${INFO}'Organizing files and granting necessary permissions.'${CLR};sleep 0.25s;
-           cp /data/data/com.termux/files/home/Termux/setup/basicsetup.sh /data/data/com.termux/files/home/;
-           chmod +x basicsetup.sh;
-           echo ${INFO}'Launching basic (non-device specific) Termux setup.'${CLR};sleep 0.25s;
-           ./basicsetup.sh
-           ;;
-        4) echo ${WARN}'Aborting Termux setup.'${CLR};sleep 0.25s;
-           exit
-           ;;
+clear
+echo -ne ${USER}"Please select a Termux setup type for current installation."${CLR};
+while true; do
+    echo -ne ${OPT}"[S]mall Screen Device\n[L]arge Screen Device\n[B]asic (non-device specific) Setup\n[Q]uit\n"
+    read setup_type
+    case $setup_type in
+               [sS]*) clear
+                      echo -ne ${INFO}"Small Device setup selected.\nOrganizing files and granting necessary permissions.\n"${CLR}
+                      sleep 1
+                      echo -ne "\033[31m>>>>>>>>>>>>>                           [33%]\033[0m\r"
+                      mv /data/data/com.termux/files/home/Termux/setup/smallscreen/setup_s.sh /data/data/com.termux/files/home/
+                      echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>>>>>>>              [66%]\033[0m\r"
+                      chmod +x setup_s.sh
+                      echo -ne "\033[32m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>[100%]\033[0m\n"
+                      while true; do
+                          echo -ne ${INFO}"Small Screen setup is ready.\nWould you like to execute it now? [Y/N]\n"${CLR}
+                          read setup_s_yn
+                          case $setup_s_yn in
+                              [yY]*) clear
+                                     secs=$((3))
+                                     while [ $secs -gt 0 ]; do
+                                         echo -ne ${INFO}"Launching Small Screen setup in: $secs\033[0K\r"${CLR}
+                                         sleep 1
+                                         : $((secs--))
+                                         echo -ne "\n"
+                                     done
+                                     ./setup_s.sh
+                                     exit
+                                     ;;
+                              [nN]*) echo -ne ${WARN}"You have selected to abort Small Screen setup.\nShould you decide to execute Small Screen setup later simply launch the setup_s.sh script (./setup_s.sh) located in the Termux HOME directory.\n"${CLR}
+                                     exit
+                                     ;;
+                          esac
+                      done
+               [lL]*) clear
+                      echo -ne ${INFO}"Large Device setup selected.\nOrganizing files and granting necessary permissions.\n"${CLR}
+                      sleep 1
+                      echo -ne "\033[31m>>>>>>>>>>>>>                           [33%]\033[0m\r"
+                      mv /data/data/com.termux/files/home/Termux/setup/largescreen/setup_l.sh /data/data/com.termux/files/home/
+                      echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>>>>>>>              [66%]\033[0m\r"
+                      chmod +x setup_l.sh
+                      echo -ne "\033[32m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>[100%]\033[0m\n"
+                      while true; do
+                          echo -ne ${INFO}"Large Screen setup is ready.\nWould you like to run it now? [Y/N]\n"${CLR}
+                          read setup_l_yn
+                          case $setup_l_yn in
+                              [yY]*) secs=$((3))
+                                     while [ $secs -gt 0 ]; do
+                                         echo -ne ${INFO}"Launching Large Screen setup in: $secs\033[0K\r"${CLR}
+                                         sleep 1
+                                         : $((secs--))
+                                         echo -ne "\n"
+                                     done
+                                     ./setup_l.sh
+                                     exit
+                                     ;;
+                              [nN]*) echo -ne ${WARN}"You have selected to abort Large Screen setup.\nShould you decide to execute Large Screen setup later simply execute the setup_l.sh script (./setup_l.sh) located in the Termux HOME directory.\n"${CLR}
+                                     exit
+                                     ;;
+                          esac
+                      done
+            [bB]*|"") clear
+                      echo -ne ${INFO}"Basic setup selected.\nOrganizing files and granting necessary permissions.\n"${CLR}
+                      sleep 1
+                      echo -ne "\033[31m>>>>>>>>>>>>>                           [33%]\033[0m\r"
+                      mv /data/data/com.termux/files/home/Termux/setup/basic/setup_b.sh /data/data/com.termux/files/home/
+                      echo -ne "\033[31m>>>>>>>>>>>>>>>>>>>>>>>>>>              [66%]\033[0m\r"
+                      chmod +x setup_b.sh
+                      echo -ne "\033[32m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>[100%]\033[0m\n"
+                      while true; do
+                          echo -ne ${INFO}"Basic Termux setup is ready.\nWould you like to run it now? [Y/N]"${CLR}
+                          read setup_b_yn
+                          case $setup_b_yn in
+                              [yY]*) secs=$((3))
+                                     while [ $secs -gt 0 ]; do
+                                         echo -ne ${INFO}"Launching Basic Termux setup in: $secs\033[0K\r"${CLR}
+                                         sleep 1
+                                         : $((secs--))
+                                         echo -ne "\n"
+                                     done
+                                     ./setup_b.sh
+                                     exit
+                                     ;;
+                              [nN]*) echo -ne ${WARN}"You have selected to abort Basic Termux setup.\nShould you decide to execute Basic Termux setup later simply launch the setup_b.sh script (./setup_b.sh) located in the Termux HOME directory.\n"${CLR}
+                                     exit
+                                     ;;
+                          esac
+                      done
+               [qQ]*) echo -ne ${WARN}"Aborting Termux setup.\n"${CLR}
+                      exit
+                      ;;
     esac
 done
