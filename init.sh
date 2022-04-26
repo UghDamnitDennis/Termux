@@ -80,6 +80,7 @@ if [ $secs -gt 0 ]; do
     sleep 1
     : $((secs--))
 done
+echo -ne "\n"
 clear
-bash setup_type.sh
+./setup_type.sh
 exit
