@@ -37,19 +37,14 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 # Alias's to change the directory
-alias lsa='bash /data/data/com.termux/files/usr/dperry/.lsa.sh'
+alias lsa='bash /data/data/com.termux/files/usr/.aliasscripts/.lsa.sh'
 alias lshome='cd /data/data/com.termux/files/home/;lsa'
 alias lsusr='cd /data/data/com.termux/files/usr/;lsa'
 alias lsetc='cd /data/data/com.termux/files/usr/etc/;lsa'
-alias lsdp='cd /data/data/com.termux/files/usr/dperry/;lsa'
 alias lsmain='cd /storage/emulated/0/;lsa'
 alias lsworks='cd /storage/emulated/0/TermuxWorks/;lsa'
-alias lsess='cd /storage/emulated/0/Termux/Essentials/;lsa'
+alias lsops='cd /storage/emulated/0/TermuxOps/;lsa'
 alias lsdocs='cd /storage/emulated/0/Documents/;lsa'
-# Remove a directory and all files
-alias rmd='/bin/rm  --recursive --force --verbose '
-# alias chmod commands
-alias ch+x='chmod +x'
 # Search command line history
 alias h="history | grep "
 # Searches for text in all files in the current folder
@@ -101,15 +96,6 @@ mkdirg ()
 	mkdir -p $1
 	cd $1
 }
-#Automatically do an ls after each cd
- cd ()
- {
- 	if [ -n "$1" ]; then
- 		builtin cd "$@" && ls
- 	else
- 		builtin cd ~ && ls
- 	fi
- }
 # Set the ultimate amazing command prompt
 alias cpu="grep 'cpu ' /proc/stat | awk '{usage=(\$2+\$4)*100/(\$2+\$4+\$5)} END {print usage}' | awk '{printf(\"%.1f\n\", \$1)}'"
 function __setprompt
